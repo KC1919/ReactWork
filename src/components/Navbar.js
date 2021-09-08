@@ -2,9 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Navbar(props) {
+
+  if(props.mode === "dark")
+  {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+  }
+  else
+  {
+    document.body.style.backgroundColor = "white";
+    document.body.style.color = "black";
+  }
+    
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className={`navbar navbar-expand-lg navbar-dark bg-dark`}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -34,7 +46,7 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <form className="d-flex">
+            {/* <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
@@ -44,7 +56,22 @@ export default function Navbar(props) {
               <button className="btn btn-outline-primary" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
+
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                onClick={props.toggleState}
+              />
+              <label
+                className="form-check-label text-light"
+                htmlFor="flexSwitchCheckDefault"
+              >
+                {props.mode==="dark"?"Disable Dark Mode":"Enable Dark Mode"}
+              </label>
+            </div>
           </div>
         </div>
       </nav>
@@ -54,4 +81,4 @@ export default function Navbar(props) {
 
 Navbar.propTypes = { title: PropTypes.string.isRequired }; //setting the properties of the props
 
-Navbar.defaultProps={title:"Set Your title here"}   //if no props will be passed, then it will use the degault values set here
+Navbar.defaultProps = { title: "Set Your title here" }; //if no props will be passed, then it will use the degault values set here
