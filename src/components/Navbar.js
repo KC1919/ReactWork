@@ -1,19 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Navbar(props) {
 
-  if(props.mode === "dark")
-  {
+export default function Navbar(props) {
+  if (props.mode === "dark") {
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white";
-  }
-  else
-  {
+    // props.showAlert("Dark mode enabled","success");
+  } else {
     document.body.style.backgroundColor = "white";
     document.body.style.color = "black";
+    // props.showAlert("Dark mode disabled","success");
   }
-    
+
   return (
     <div className="App">
       <nav className={`navbar navbar-expand-lg navbar-dark bg-dark`}>
@@ -60,6 +59,7 @@ export default function Navbar(props) {
 
             <div className="form-check form-switch">
               <input
+                style={{cursor:"pointer"}}
                 className="form-check-input"
                 type="checkbox"
                 id="flexSwitchCheckDefault"
@@ -69,7 +69,9 @@ export default function Navbar(props) {
                 className="form-check-label text-light"
                 htmlFor="flexSwitchCheckDefault"
               >
-                {props.mode==="dark"?"Disable Dark Mode":"Enable Dark Mode"}
+                {props.mode === "dark"
+                  ? "Disable Dark Mode"
+                  : "Enable Dark Mode"}
               </label>
             </div>
           </div>

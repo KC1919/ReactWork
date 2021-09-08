@@ -1,39 +1,50 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
-
-  const handleUpClick = (event) => {
-    let newText = text.toUpperCase();
-    setText(newText);
-  };
-
   const handleOnChange = (event) => {
     console.log(event.target.value);
     setText(event.target.value);
   };
 
-  const handleLowClick=(event)=>
-  {
-    let newText=text.toLowerCase();
-    setText(newText);
-  }
+  const handleUpClick = (event) => {
+    if (text.length !== 0) {
+      let newText = text.toUpperCase();
+      setText(newText);
+      props.showAlert("Text Converted to Upper Case!", "success");
+    }
+  };
 
-  const handleClearClick=(event)=>
-  {
-    setText("");
-  }
+  const handleLowClick = (event) => {
+    if (text.length!== 0) {
+      let newText = text.toLowerCase();
+      setText(newText);
+      props.showAlert("Text converted to lower case!", "success");
+    }
+  };
 
-  const handleCopy=(event)=>{
-    let copiedText=document.getElementById("myBox");
-    copiedText.select();
-    navigator.clipboard.writeText(copiedText.value);
-  }
+  const handleClearClick = (event) => {
+    if (text.length!== 0) {
+      setText("");
+      props.showAlert("Text cleared!", "success");
+    }
+  };
 
-  const handleRemoveSpaces=()=>{
-    let newText=text.split(/[ ]+/);
-    setText(newText.join(" "));
-  }
-  
+  const handleCopy = (event) => {
+    if (text.length!== 0) {
+      let copiedText = document.getElementById("myBox");
+      copiedText.select();
+      navigator.clipboard.writeText(copiedText.value);
+      props.showAlert("Text copied to clipboard!", "success");
+    }
+  };
+
+  const handleRemoveSpaces = () => {
+    if (text.length!== 0) {
+      let newText = text.split(/[ ]+/);
+      setText(newText.join(" "));
+      props.showAlert("Extra spaces removed!", "success");
+    }
+  };
 
   const [text, setText] = useState("");
 
@@ -60,10 +71,14 @@ export default function TextForm(props) {
           Convert to Lowercase
         </button>
 
-        <button style={{"position":"absolute","right":"120px"}} className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button
+          style={{ position: "absolute", right: "120px" }}
+          className="btn btn-primary mx-2"
+          onClick={handleClearClick}
+        >
           Clear
         </button>
-        
+
         <button className="btn btn-danger mx-2" onClick={handleCopy}>
           Copy Text
         </button>
@@ -76,7 +91,8 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h2>Text Summary</h2>
         <pre>
-          Words : {text.length === 0 ? 0 : text.split(" ").length}   Characters : {text.length}
+          Words : {text.length === 0 ? 0 : text.split(" ").length} Characters :{" "}
+          {text.length}
         </pre>
         <p>{0.008 * text.length} Minutes read</p>
         <h3>Preview</h3>
