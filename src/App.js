@@ -22,9 +22,15 @@ function App() {
   const [mode, setMode] = useState("light");
 
   const toggleState = () => {
-    if (mode === "light") {
+
+    // if(color)
+    // {
+    //   setBackgroundColor(color);
+    // }
+
+     if (mode === "light") {
       setMode("dark");
-      showAlert("Dark mode enabled","success");
+      showAlert("Dark mode enabled","warning");
     } else {
       setMode("light");
       showAlert("Dark mode disabled","success");

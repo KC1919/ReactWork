@@ -1,36 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 export default function Navbar(props) {
   if (props.mode === "dark") {
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white";
-    // props.showAlert("Dark mode enabled","success");
   } else {
     document.body.style.backgroundColor = "white";
     document.body.style.color = "black";
-    // props.showAlert("Dark mode disabled","success");
   }
+
+  const setBackgroundColor = (event) => {
+    let color = event.target.innerText.toLowerCase();
+
+    console.log(color);
+
+    if (color === "reset") {
+      document.body.style.backgroundColor = "white";
+    }
+
+    document.body.style.backgroundColor = color;
+    document.body.style.color = "black";
+  };
 
   return (
     <div className="App">
       <nav className={`navbar navbar-expand-lg navbar-dark bg-dark`}>
-        <div className="container-fluid">
+        <div className="container-fluid" id="homeAbout">
           <a className="navbar-brand" href="/">
             {props.title}
           </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -45,21 +45,49 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            {/* <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-primary" type="submit">
-                Search
+
+            <div>
+              <button
+                id="blue"
+                type="button"
+                onClick={setBackgroundColor}
+                className="btn btn-outline-primary mx-1"
+              >
+                Blue
               </button>
-            </form> */}
+              <button
+                id="yellow"
+                type="button"
+                className="btn btn-outline-warning mx-1"
+                onClick={setBackgroundColor}
+              >
+                Yellow
+              </button>
+              <button
+                id="green"
+                type="button"
+                // onClick={}
+                className="btn btn-outline-success mx-1"
+                onClick={setBackgroundColor}
+              >
+                Green
+              </button>
+
+              <button
+                style={{margin:"0 30px 0 50px"}}
+                id="reset"
+                type="button"
+                // onClick={}
+                className="btn btn-outline-danger"
+                onClick={setBackgroundColor}
+              >
+                Reset
+              </button>
+            </div>
 
             <div className="form-check form-switch">
               <input
-                style={{cursor:"pointer"}}
+                style={{ cursor: "pointer" }}
                 className="form-check-input"
                 type="checkbox"
                 id="flexSwitchCheckDefault"
