@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+// import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
   if (props.mode === "dark") {
@@ -40,7 +41,7 @@ export default function Navbar(props) {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <a className="nav-link active" aria-current="page" href="/about">
                   About
                 </a>
               </li>
@@ -66,7 +67,6 @@ export default function Navbar(props) {
               <button
                 id="green"
                 type="button"
-                // onClick={}
                 className="btn btn-outline-success mx-1"
                 onClick={setBackgroundColor}
               >
@@ -77,7 +77,6 @@ export default function Navbar(props) {
                 style={{margin:"0 30px 0 50px"}}
                 id="reset"
                 type="button"
-                // onClick={}
                 className="btn btn-outline-danger"
                 onClick={setBackgroundColor}
               >

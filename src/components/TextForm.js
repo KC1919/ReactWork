@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleOnChange = (event) => {
-    console.log(event.target.value);
     setText(event.target.value);
   };
 
@@ -91,10 +90,10 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h2>Text Summary</h2>
         <pre>
-          Words : {text.length === 0 ? 0 : text.split(" ").length} Characters :{" "}
-          {text.length}
+          Words : {text.length === 0 ? 0 : text.replaceAll(/\s\s+/g," ").trim().split(" ").length} Characters :{" "}
+          {text.replaceAll(/\s\s+/g," ").trim().length}
         </pre>
-        <p>{0.008 * text.length} Minutes read</p>
+        <p>{0.008 * (text.replaceAll(/\s\s+/g," ").trim().split(" ").length)} Minutes read</p>
         <h3>Preview</h3>
         <p>{text}</p>
       </div>
