@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/TextMod-React/static/js/main.3af509c2.chunk.js",
-    "main.js.map": "/TextMod-React/static/js/main.3af509c2.chunk.js.map",
+    "main.js": "/TextMod-React/static/js/main.c35d2845.chunk.js",
+    "main.js.map": "/TextMod-React/static/js/main.c35d2845.chunk.js.map",
     "runtime-main.js": "/TextMod-React/static/js/runtime-main.e04aaf6e.js",
     "runtime-main.js.map": "/TextMod-React/static/js/runtime-main.e04aaf6e.js.map",
     "static/js/2.87239bed.chunk.js": "/TextMod-React/static/js/2.87239bed.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.e04aaf6e.js",
     "static/js/2.87239bed.chunk.js",
-    "static/js/main.3af509c2.chunk.js"
+    "static/js/main.c35d2845.chunk.js"
   ]
 }
