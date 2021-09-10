@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 // import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
-
   if (props.mode === "blue") {
     document.body.style.backgroundColor = "powderBlue";
     document.body.style.color = "black";
@@ -24,8 +23,6 @@ export default function Navbar(props) {
     }
   }
 
-  
-
   return (
     <div className="App">
       <nav className={`navbar navbar-expand-lg navbar-dark bg-dark`}>
@@ -34,95 +31,104 @@ export default function Navbar(props) {
             {props.title}
           </a>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
+          <div style={{justifyContent:"space-between"}}  className="d-flex container-fluid collapse navbar-collapse" id="navbarSupportedContent">
 
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  About
-                </a>
-              </li>
-            </ul>
+            <div>
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="#">
+                    Home
+                  </a>
+                </li>
 
-            <div className="d-flex">
-              <div style={{ cursor: "pointer" }}>
-                <button
-                  id="blue"
-                  type="button"
-                  onClick={() => {
-                    props.toggleState("blue");
-                  }}
-                  className="btn btn-outline-primary mx-1 my-1"
-                >
-                  Blue
-                </button>
-              </div>
-              <div style={{ cursor: "pointer" }}>
-                <button
-                  id="yellow"
-                  type="button"
-                  className="btn btn-outline-warning mx-1 my-1"
-                  onClick={() => {
-                    props.toggleState("yellow");
-                  }}
-                >
-                  Yellow
-                </button>
-              </div>
-
-              <div style={{ cursor: "pointer" }}>
-                <button
-                  id="green"
-                  type="button"
-                  className="btn btn-outline-success mx-1 my-1"
-                  onClick={() => {
-                    props.toggleState("green");
-                  }}
-                >
-                  Green
-                </button>
-              </div>
-
-              <div style={{ cursor: "pointer" }}>
-                <button
-                  style={{ margin: "0 30px 0 50px" }}
-                  id="reset"
-                  type="button"
-                  className="btn btn-outline-danger my-1"
-                  onClick={() => {
-                    props.toggleState("reset");
-                  }}
-                >
-                  Reset
-                </button>
-              </div>
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="#">
+                    About
+                  </a>
+                </li>
+              </ul>
             </div>
 
-            <div className="form-check form-switch">
-              <input
-                style={{ cursor: "pointer" }}
-                className="form-check-input"
-                type="checkbox"
-                id="toggleBtn"
-                onClick={()=>{props.toggleState(null)}}
-                value="NO"
-              />
-              <label
-                className="form-check-label text-light"
-                htmlFor="flexSwitchCheckDefault"
-              >
-                {props.mode === "dark"
-                  ? "Disable Dark Mode"
-                  : "Enable Dark Mode"}
-              </label>
+            
+              <div className="d-flex">
+
+                <div style={{ cursor: "pointer" }}>
+                  <button
+                    id="blue"
+                    type="button"
+                    onClick={() => {
+                      props.toggleState("blue");
+                    }}
+                    className="btn btn-outline-primary mx-1 my-1"
+                  >
+                    Blue
+                  </button>
+                </div>
+
+                <div style={{ cursor: "pointer" }}>
+                  <button
+                    id="yellow"
+                    type="button"
+                    className="btn btn-outline-warning mx-1 my-1"
+                    onClick={() => {
+                      props.toggleState("yellow");
+                    }}
+                  >
+                    Yellow
+                  </button>
+                </div>
+
+                <div style={{ cursor: "pointer" }}>
+                  <button
+                    id="green"
+                    type="button"
+                    className="btn btn-outline-success mx-1 my-1"
+                    onClick={() => {
+                      props.toggleState("green");
+                    }}
+                  >
+                    Green
+                  </button>
+                </div>
+
+                <div style={{ cursor: "pointer" }}>
+                  <button
+                    style={{ margin: "0 30px 0 50px" }}
+                    id="reset"
+                    type="button"
+                    className="btn btn-outline-danger my-1"
+                    onClick={() => {
+                      props.toggleState("reset");
+                    }}
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
+
+              <div className="form-check form-switch">
+                <input
+                  style={{ cursor: "pointer" }}
+                  className="form-check-input"
+                  type="checkbox"
+                  id="toggleBtn"
+                  onClick={() => {
+                    props.toggleState(null);
+                  }}
+                  value="NO"
+                />
+                <label
+                  className="form-check-label text-light"
+                  htmlFor="flexSwitchCheckDefault"
+                >
+                  {props.mode === "dark"
+                    ? "Disable Dark Mode"
+                    : "Enable Dark Mode"}
+                </label>
+              </div>
+               
             </div>
           </div>
-        </div>
       </nav>
     </div>
   );
