@@ -23,18 +23,32 @@ function App() {
 
   const [mode, setMode] = useState("light");
 
-  const toggleState = () => {
-    // if(color)
-    // {
-    //   setBackgroundColor(color);
-    // }
+  const toggleState = (colour) => {
+    let color = colour;
+    console.log(color);
 
-    if (mode === "light") {
-      setMode("dark");
-      showAlert("Dark mode enabled", "warning");
-    } else {
+    if (color === "reset") {
       setMode("light");
-      showAlert("Dark mode disabled", "success");
+      showAlert("Background Changed", "warning");
+    } else {
+      if (color === "green") {
+        setMode("green");
+        showAlert("Background Changed", "warning");
+      } else if (color === "blue") {
+        setMode("blue");
+        showAlert("Background Changed", "warning");
+      } else if (color === "yellow") {
+        setMode("yellow");
+        showAlert("Background Changed", "warning");
+      } else {
+        if (mode === "dark") {
+          setMode("light");
+          showAlert("Dark mode disabled", "success");
+        } else {
+          setMode("dark");
+          showAlert("Dark mode enabled", "warning");
+        }
+      }
     }
   };
 
@@ -43,28 +57,28 @@ function App() {
       {/* <Navbar></Navbar>  when we will not pass any value tot he props, then default values will be rendered */}
 
       {/* <Router> */}
-        <Navbar
-          title={"TextMod"}
-          toggleState={toggleState}
-          mode={mode}
+      <Navbar
+        title={"TextMod"}
+        toggleState={toggleState}
+        mode={mode}
+        showAlert={showAlert}
+      />
+      <Alert alert={alert} />
+      <div className="container my-3">
+        {/* <Switch> */}
+        {/* <Route exact path="/"> */}
+        <TextForm
+          heading={"Enter your text below to analyze"}
           showAlert={showAlert}
         />
-        <Alert alert={alert} />
-        <div className="container my-3">
-          {/* <Switch> */}
-            {/* <Route exact path="/"> */}
-              <TextForm
-                heading={"Enter your text below to analyze"}
-                showAlert={showAlert}
-              />
-            {/* </Route> */}
+        {/* </Route> */}
 
-            {/* <Route exact path="/about">
+        {/* <Route exact path="/about">
               <About toggleState={toggleState} mode={mode} />
             </Route> */}
 
-          {/* </Switch> */}
-        </div>
+        {/* </Switch> */}
+      </div>
       {/* </Router> */}
     </>
   );

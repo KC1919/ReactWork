@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
+
+  const [text, setText] = useState("");
+  
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -45,8 +48,6 @@ export default function TextForm(props) {
     }
   };
 
-  const [text, setText] = useState("");
-
   return (
     <div>
       <div className="container my-3">
@@ -62,27 +63,27 @@ export default function TextForm(props) {
           ></textarea>
         </div>
 
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
 
-        <button className="btn btn-success mx-2" onClick={handleLowClick}>
+        <button disabled={text.length===0} className="btn btn-success mx-2 my-1" onClick={handleLowClick}>
           Convert to Lowercase
         </button>
 
-        <button
+        <button disabled={text.length===0}
           style={{ position: "absolute", right: "120px" }}
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 my-1"
           onClick={handleClearClick}
         >
           Clear
         </button>
 
-        <button className="btn btn-danger mx-2" onClick={handleCopy}>
+        <button disabled={text.length===0} className="btn btn-danger mx-2 my-1" onClick={handleCopy}>
           Copy Text
         </button>
 
-        <button className="btn btn-warning mx-2" onClick={handleRemoveSpaces}>
+        <button disabled={text.length===0} className="btn btn-warning mx-2 my-1" onClick={handleRemoveSpaces}>
           Remove Extra Spaces
         </button>
       </div>
@@ -93,7 +94,7 @@ export default function TextForm(props) {
           Words : {text.length === 0 ? 0 : text.replaceAll(/\s\s+/g," ").trim().split(" ").length} Characters :{" "}
           {text.replaceAll(/\s\s+/g," ").trim().length}
         </pre>
-        <p>{0.008 * (text.replaceAll(/\s\s+/g," ").trim().split(" ").length)} Minutes read</p>
+        <p>{text.length === 0 ? 0 :0.008 * (text.replaceAll(/\s\s+/g," ").trim().split(" ").length)} Minutes read</p>
         <h3>Preview</h3>
         <p>{text}</p>
       </div>
